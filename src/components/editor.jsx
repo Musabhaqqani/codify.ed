@@ -1,33 +1,39 @@
 import { React, useState, useRef } from 'react'
 import Editor from '@monaco-editor/react'
-import { Box } from '@chakra-ui/react';
+import { Box, HStack } from '@chakra-ui/react';
 import LanguageSelector from './languageSelector';
 import { CODE_SNIPPETS } from '../constants';
+import Output from './output'
 
 export default function editor() {
-    const [code, setCode] = useState('');
-    const [language,setLanguage] = useState('javascript');
+    const [code, setCode] = useState(CODE_SNIPPETS["javascript"]);
+    const [language, setLanguage] = useState('javascript');
     const editorRef = useRef();
+
     const onMount = (ref) => {
         editorRef.current = ref;
         ref.focus();
     }
-    const onSelect = (langauge)=>{
-        setLanguage(langauge)
-        setCode(CODE_SNIPPETS[langauge])
+    const onSelect = (language) => {
+        setLanguage(language)
+        setCode(CODE_SNIPPETS[language])
     }
     return (
         <div>
-        <LanguageSelector language = {language} onSelect = {onSelect} />
-            <Box>
-                <Editor height="80vh"
-                    theme='vs-dark'
-                    language={language}
-                    defaultValue="// Write your code here"
-                    value={code}
-                    onChange={(e) => setCode(e.target.value)}
-                    onMount={onMount} />
-            </Box>
+            <HStack spacing={4}>
+                <Box w='50%'>
+                    <LanguageSelector language={language} onSelect={onSelect} />
+                    <Box>
+                        <Editor height="75vh"
+                            theme='vs-dark'
+                            language={language}
+                            value={code}
+                            onChange={(e) => setCode(e.target)}
+                            onMount={onMount} />
+                    </Box>
+                </Box>
+                <Output editorRef = {editorRef} language = {language} />
+            </HStack>
         </div>
     )
 }
