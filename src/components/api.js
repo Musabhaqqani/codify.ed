@@ -14,7 +14,12 @@ export const executeCode = async (language, sourceCode) => {
                 {
                     "content": sourceCode
                 }
-            ]
+            ],
+            "args": [[2], [1, 2, 4], [2, 3, 5]],
+            "compile_timeout": 10000,
+            "run_timeout": 3000,
+            "compile_memory_limit": -1,
+            "run_memory_limit": -1
         })
-        return response.data
+    return response.data
 }

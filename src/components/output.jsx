@@ -3,7 +3,7 @@ import {React,useState} from 'react'
 import { executeCode } from './api';
 
 export default function output({ editorRef, language }) {
-    const [output,setOutput] = useState([null])
+    const [output,setOutput] = useState(null)
     const [isLoading,setIsLoading] = useState(false)
     const [isError, setIsError] = useState(false)
     const toast = useToast()
