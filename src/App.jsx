@@ -1,19 +1,23 @@
 import './App.css'
-import Editor from './components/editor'
-import { ChakraProvider } from '@chakra-ui/react'
-import { Box } from "@chakra-ui/react"
-import theme from './components/theme'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Login from './components/login'
+import LoadEditor from './components/loadEditor'
+import ProtectedRoutes from './components/protectedRoutes'
 
 
 function App() {
 
   return (
     <>
-      <ChakraProvider theme={theme}>
-        <Box minH="100vh" bg="#0f0a19" color="gray.500" px={10} py={8} >
-          <Editor />
-        </Box>
-      </ChakraProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Login />} />
+          <Route element={<ProtectedRoutes />} >
+            <Route path='/dashboard' element={<LoadEditor />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+
     </>
   )
 }
