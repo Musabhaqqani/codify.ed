@@ -7,9 +7,9 @@ const { User } = require('../collections/user');
 
 router.post("/signup", async (req, res) => {
     try {
-        const findUser = await User.findOne({ username: req.body.username });
+        const findUser = await User.findOne({ rollnumber: req.body.rollnumber });
         if (findUser) {
-            return res.status(400).send("Email already exists");
+            return res.status(400).json({mssg : "User already exists"});
         }
         const user = new User(req.body)
         const salt = await bcrypt.genSalt()
@@ -27,8 +27,8 @@ router.post("/signup", async (req, res) => {
 
 router.post("/", async (req, res) => {
     try {
-        if (req.body.username && req.body.password) {
-            const user = await User.findOne({ username: req.body.username })
+        if (req.body.rollnumber && req.body.password) {
+            const user = await User.findOne({ rollnumber: req.body.rollnumber })
             if (user) {
                 const passwordMatch = await bcrypt.compare(req.body.password, user.password)
                 if (passwordMatch) {
@@ -56,7 +56,7 @@ router.post("/", async (req, res) => {
         }
 
         else {
-            res.status(400).send({ result: "Please provide both username and password." })
+            res.status(400).send({ result: "Please provide both rollnumber and password." })
         }
     }
 

@@ -14,7 +14,7 @@ function App() {
           <Route path='/' element={<Login />} />
           <Route path='/signup' element={<Signup />} />
           <Route element={<ProtectedRoutes />} >
-            <Route path='/dashboard' element={<LoadEditor />} />
+            <Route path='/admin-dashboard' element={<LoadEditor />} />
           </Route>
         </Routes>
       </BrowserRouter>
