@@ -3,7 +3,7 @@ import { Outlet , Navigate } from 'react-router-dom'
 
 const isAuth = () => {
     // take the jwt token and return either true or false
-    const token = localStorage.getItem("sessionToken")
+    const token = localStorage.getItem("token")
     if (token) 
         return true
     else
