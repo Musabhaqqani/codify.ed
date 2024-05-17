@@ -24,15 +24,15 @@ export default function editor() {
                 <Box w='50%'>
                     <LanguageSelector language={language} onSelect={onSelect} />
                     <Box>
-                        <Editor height="75vh"
+                        <Editor height= "50vh"
                             theme='vs-dark'
                             language={language}
                             value={code}
                             onChange={(e) => setCode(e.target)}
                             onMount={onMount} />
                     </Box>
+                    <Output editorRef={editorRef} language={language} />
                 </Box>
-                <Output editorRef = {editorRef} language = {language} />
             </HStack>
         </div>
     )

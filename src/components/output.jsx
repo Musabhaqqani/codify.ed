@@ -33,10 +33,10 @@ export default function output({ editorRef, language }) {
     }
     return (
         <Box w='50%'>
-            <Button variant='outline' colorScheme='green' mb={4} onClick={runCode} isLoading= {isLoading}>
+            <Button mt = {6} variant='outline' colorScheme='green' mb={4} onClick={runCode} isLoading= {isLoading}>
                 Run
             </Button>
-            <Box height='75vh' p={2} border='1px solid' borderRadius={4} borderColor='#333' color={
+            <Box height={'max-content'} p={2} border='1px solid' borderRadius={4} borderColor='#333' color={
                 isError? "red.500" : "grey.900"
             }>
                 {

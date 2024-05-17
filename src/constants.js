@@ -11,10 +11,10 @@ export const LANGUAGE_VERSIONS = {
   };
 
   export const CODE_SNIPPETS = {
-    javascript: `\nfunction greet(name) {\n\tconsole.log("Hello, " + name + "!");\n}\n\ngreet("Alex");\n`,
-    typescript: `\ntype Params = {\n\tname: string;\n}\n\nfunction greet(data: Params) {\n\tconsole.log("Hello, " + data.name + "!");\n}\n\ngreet({ name: "Alex" });\n`,
+    javascript: `function greet(name) {\n\tconsole.log("Hello, " + name + "!");\n}\n\ngreet("Alex");\n`,
+    typescript: `type Params = {\n\tname: string;\n}\n\nfunction greet(data: Params) {\n\tconsole.log("Hello, " + data.name + "!");\n}\n\ngreet({ name: "Alex" });\n`,
     python: `import sys\nimport ast\ndef add(a,b):\n\treturn a+b\n\nif __name__ == "__main__":\n\tn = int(sys.argv[1])\n\tfor i in range (2, n+2):\n\t\tcommandInput = ast.literal_eval(sys.argv[i])\n\t\ta = commandInput[0]\n\t\tb = commandInput[1]\n\t\tresult = commandInput[2]\n\t\tprint(add(a,b) == result)`,
-    java: `\npublic class HelloWorld {\n\tpublic static void main(String[] args) {\n\t\tSystem.out.println("Hello World");\n\t}\n}\n`,
+    java: `public class HelloWorld {\n\tpublic static void main(String[] args) {\n\t\tSystem.out.println("Hello World");\n\t}\n}\n`,
     csharp:
       'using System;\n\nnamespace HelloWorld\n{\n\tclass Hello { \n\t\tstatic void Main(string[] args) {\n\t\t\tConsole.WriteLine("Hello World in C#");\n\t\t}\n\t}\n}\n',
     php: "<?php\n\n$name = 'Alex';\necho $name;\n",

@@ -22,12 +22,12 @@ export default function login() {
         if (result.data.userType) {
           localStorage.setItem("userType", JSON.stringify(result.data.userType))
         }
-
         localStorage.setItem("rollnumber", JSON.stringify(result.data.rollnumber))
         localStorage.setItem("token", JSON.stringify(result.token))
         toast.success("Login success")
 
         if (result.data.usertype === "admin") {
+          toast.success("Routing")
           navigate('/admin-dashboard')
         }
         else {
