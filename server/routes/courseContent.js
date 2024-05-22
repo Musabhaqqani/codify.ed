@@ -1,6 +1,36 @@
 const express = require("express");
 const router = express.Router();
 const Question = require('../collections/questions');
+const Subjects = require("../collections/subjects")
+
+router.post('/subject-details', async (req, res) => {
+  try {
+    const findSubject = await Subjects.findOne({ subject: req.body.subject });
+    if (findSubject) {
+      return res.json({ mssg: "Subject already exists" });
+    }
+    const subject = new Subjects(req.body);
+    await subject.save();
+    res.json({ mssg: "Subject added" });
+  } catch (err) {
+    res.status(500).json({ mssg: "Internal server error" });
+  }
+});
+
+router.get("/subject-details", async (req, res) => {
+  try {
+    const subjectsList = await Subjects.find({})
+    let subjects = []
+      subjectsList.forEach(sub => {
+        subjects.push(sub.subject)
+      });
+    res.json(subjects)
+  }
+  catch (err) {
+    res.json("internal server error")
+  }
+});
+
 router.post('/questions', async (req, res) => {
   try {
     const { subject, week, questionTitle, questionDescription, testCases } = req.body;
@@ -22,15 +52,6 @@ router.post('/questions', async (req, res) => {
 });
 router.get('/questions', async (req, res) => {
   try {
-    // const { subject, week } = req.query;
-
-    // let query = {};
-    // if (subject) {
-    //   query.subject = subject;
-    // }
-    // if (week) {
-    //   query.week = week;
-    // }
     const questions = await Question.find({});
     res.status(200).json(questions);
   } catch (err) {
@@ -40,12 +61,12 @@ router.get('/questions', async (req, res) => {
 
 });
 
-router.get("/subjects", async (req, res) => {
-  const questions = await Question.find({})
-  let subjects = []
-  questions.forEach(question => {
-    subjects.push(question.subject)
-  });
-  res.json(subjects)
-})
+// router.get("/subjects", async (req, res) => {
+//   const questions = await Question.find({})
+//   let subjects = []
+//   questions.forEach(question => {
+//     subjects.push(question.subject)
+//   });
+//   res.json(subjects)
+// })
 module.exports = router;
