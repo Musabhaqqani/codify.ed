@@ -15,18 +15,18 @@ const QuestionSchema = new mongoose.Schema({
   questionTitle: {
     type: String,
     required: true,
-    unique: true // Ensure unique titles (prevents duplicates)
+    unique: true 
   },
   questionDescription: {
     type: String,
     required: true
   },
   testCases: {
-    type: [[String]], // Array of nested arrays (test case inputs and expected answer)
+    type: [[String]], 
     required: true,
     validate: {
-      validator: testCaseArray => testCaseArray.length > 0 && // Ensure at least one test case
-        testCaseArray.every(testCase => testCase.length >= 1), // Each inner array has at least 1 element (expected answer)
+      validator: testCaseArray => testCaseArray.length > 0 && 
+        testCaseArray.every(testCase => testCase.length >= 1), 
       message: 'testCases must be an array of arrays with at least one element (expected answer)'
     }
   }
