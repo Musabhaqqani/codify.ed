@@ -50,6 +50,7 @@ router.post('/questions', async (req, res) => {
     res.status(500).json({ message: 'Error storing question' });
   }
 });
+
 router.get('/questions', async (req, res) => {
   try {
     const questions = await Question.find({});
@@ -61,12 +62,21 @@ router.get('/questions', async (req, res) => {
 
 });
 
-// router.get("/subjects", async (req, res) => {
-//   const questions = await Question.find({})
-//   let subjects = []
-//   questions.forEach(question => {
-//     subjects.push(question.subject)
-//   });
-//   res.json(subjects)
-// })
+router.get("/subject-weeks", async (req, res) => {
+  const questions = await Question.find({subject : req.query.subject})
+  let weeks = []
+  questions.forEach(question => {
+    weeks.push(question.week)
+  });
+  res.json(weeks.sort())
+})
+
+router.get("/subject-week-details", async (req, res) => {
+  const questions = await Question.find({subject : req.query.subject, week : req.query.week})
+  res.json(questions)
+})
+router.get("/week-question-details", async (req, res) => {
+  const questions = await Question.find({subject : req.query.subject, week : req.query.week, questionTitle:req.query.questionTitle})
+  res.json(questions)
+})
 module.exports = router;

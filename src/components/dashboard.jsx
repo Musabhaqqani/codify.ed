@@ -25,7 +25,7 @@ function dashboard() {
     return (
         <div className='text-white'>
             <Navbar className="mb-5" />
-            {isOpen && <Modal close={setIsOpen} />}
+            {isOpen && <Modal create = "Subject" close={setIsOpen} />}
             <div className="p-5 ">
                 <div className='flex justify-between'>
                     <h1 className='text-3xl'>Subjects</h1>

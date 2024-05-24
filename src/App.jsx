@@ -6,6 +6,7 @@ import ProtectedRoutes from './components/protectedRoutes'
 import Dashboard from './components/dashboard'
 import Signup from './components/signup'
 import SubjectPage from './components/subjectPage'
+import DisplayQuestionList from './components/displayQuestionList'
 
 function App() {
 
@@ -17,7 +18,8 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route element={<ProtectedRoutes />} >
             <Route path='/admin-dashboard' element={<Dashboard />} />
-            <Route path='/admin-dashboard/subject' element={<SubjectPage />} />
+            <Route path='/admin-dashboard/subject/:subjectName' element={<SubjectPage />} />
+            <Route path='/admin-dashboard/subject/:subjectName/:weekNumber' element = {<DisplayQuestionList />} />
           </Route>
         </Routes>
       </BrowserRouter>
