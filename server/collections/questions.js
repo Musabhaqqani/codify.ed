@@ -4,10 +4,6 @@ const url = 'mongodb+srv://musabhaqqani:iUwJGslvNFSNjBOm@cluster0.onkpicf.mongod
 mongoose.connect(url).then(()=> console.log("Student schema connected"))
 
 const QuestionSchema = new mongoose.Schema({
-  language: {
-   type:String,
-   required:true
-  },
   subject: {
     type: String,
     required: true
