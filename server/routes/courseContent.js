@@ -33,7 +33,7 @@ router.get("/subject-details", async (req, res) => {
 
 router.post('/questions', async (req, res) => {
   try {
-    const { subject, week, questionTitle, questionDescription, testCases } = req.body;
+    const { subject, week, questionTitle, questionDescription,language, testCases } = req.body;
 
     // Check if a question with the same title already exists
     const existingQuestion = await Question.findOne({ questionTitle });
@@ -41,7 +41,7 @@ router.post('/questions', async (req, res) => {
       return res.status(409).json({ message: 'Question with this title already exists' });
     }
 
-    const newQuestion = new Question({ subject, week, questionTitle, questionDescription, testCases });
+    const newQuestion = new Question({ subject, week, questionTitle, questionDescription,language, testCases });
     await newQuestion.save();
 
     res.status(201).json({ message: 'Question stored successfully' });
@@ -62,12 +62,17 @@ router.get('/questions', async (req, res) => {
 
 });
 
+function removeDuplicates(array) {
+  return [...new Set(array)];
+}
+
 router.get("/subject-weeks", async (req, res) => {
   const questions = await Question.find({subject : req.query.subject})
   let weeks = []
   questions.forEach(question => {
     weeks.push(question.week)
   });
+  weeks = removeDuplicates(weeks)
   res.json(weeks.sort())
 })
 
@@ -77,7 +82,7 @@ router.get("/subject-week-details", async (req, res) => {
 })
 
 router.get("/week-question-details", async (req, res) => {
-  const questions = await Question.find({subject : req.query.subject, week : req.query.week, title:req.query.questionTitle})
+  const questions = await Question.findOne({subject : req.query.subject, week : req.query.week, questionTitle:req.query.questionTitle})
   res.json(questions)
 })
 
