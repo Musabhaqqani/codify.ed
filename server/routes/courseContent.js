@@ -75,8 +75,10 @@ router.get("/subject-week-details", async (req, res) => {
   const questions = await Question.find({subject : req.query.subject, week : req.query.week})
   res.json(questions)
 })
+
 router.get("/week-question-details", async (req, res) => {
-  const questions = await Question.find({subject : req.query.subject, week : req.query.week, questionTitle:req.query.questionTitle})
+  const questions = await Question.find({subject : req.query.subject, week : req.query.week, title:req.query.questionTitle})
   res.json(questions)
 })
+
 module.exports = router;

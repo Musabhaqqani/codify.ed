@@ -25,11 +25,11 @@ function subjectPage() {
   return (
     <div className='text-white'>
       <Navbar className="mb-5" />
-      <div className="grid grid-cols-3 gap-5 p-5 md:grid-cols-4">
+      <div className="grid grid-cols-3 gap-5 p-5 md:grid-cols-4 cursor-pointer">
         {
           weekList.length > 0 ? (
             weekList.map((week, index) => (
-              <WeekCard key={index} weekNumber={week} subject = {subjectName} />
+              <WeekCard  key={index} weekNumber={week} subject = {subjectName} />
             ))
           ) : (
             <h1 className='text-3xl'>No week programs created!!</h1>

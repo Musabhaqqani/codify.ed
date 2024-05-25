@@ -7,6 +7,7 @@ import Dashboard from './components/dashboard'
 import Signup from './components/signup'
 import SubjectPage from './components/subjectPage'
 import DisplayQuestionList from './components/displayQuestionList'
+import DisplayQuestionDetails from './components/displayQuestionDetails'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
             <Route path='/admin-dashboard' element={<Dashboard />} />
             <Route path='/admin-dashboard/subject/:subjectName' element={<SubjectPage />} />
             <Route path='/admin-dashboard/subject/:subjectName/:weekNumber' element = {<DisplayQuestionList />} />
+            <Route path='/admin-dashboard/subject/:subjectName/:weekNumber/:title' element = {<DisplayQuestionDetails />} />
           </Route>
         </Routes>
       </BrowserRouter>
