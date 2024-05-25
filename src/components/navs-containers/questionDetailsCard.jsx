@@ -1,4 +1,5 @@
 import React from 'react'
+import AdminCodeEditor from "./adminCodeEditor"
 
 function questionDetailsCard(props) {
 
@@ -7,7 +8,7 @@ function questionDetailsCard(props) {
     const slicedTestCases = props.testCases.slice(1);
 
     return (
-        <div className='m-10 p-10 bg-slate-800 font-mono rounded-lg text-xl' >
+        <div className='m-10 p-5 bg-slate-800 font-mono rounded-lg text-xl' >
             <p className='pb-5'>Title : {props.title}</p>
             <p className='pb-5'>Description : {props.description}</p>
             <p className='pb-5'>Test Cases : {initialTestCase}</p>
@@ -17,6 +18,8 @@ function questionDetailsCard(props) {
                     <p>Output: {testCase[testCase.length - 1]}</p>
                 </div>
             ))}
+            <p className='pb-5'>Code Snippet : </p>
+            <AdminCodeEditor lang = {props.language} code = {props.snippet} />
         </div>
     )
 }
