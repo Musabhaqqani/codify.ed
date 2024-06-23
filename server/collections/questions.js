@@ -26,7 +26,7 @@ const QuestionSchema = new mongoose.Schema({
     required : true
   },
   testCases: {
-    type: [[String]], 
+    type: [[Number]], 
     required: true,
     validate: {
       validator: testCaseArray => testCaseArray.length > 0 && 
