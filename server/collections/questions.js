@@ -33,6 +33,10 @@ const QuestionSchema = new mongoose.Schema({
         testCaseArray.every(testCase => testCase.length >= 1), 
       message: 'testCases must be an array of arrays with at least one element (expected answer)'
     }
+  },
+  code:{
+    type:String,
+    required:true
   }
 });
 
