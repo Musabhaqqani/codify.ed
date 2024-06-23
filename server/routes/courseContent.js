@@ -33,7 +33,7 @@ router.get("/subject-details", async (req, res) => {
 
 router.post('/questions', async (req, res) => {
   try {
-    const { subject, week, questionTitle, questionDescription,language, testCases,code } = req.body;
+    const { subject, week, questionTitle, questionDescription,language, testCases,codeSnippet } = req.body;
 
     // Check if a question with the same title already exists
     const existingQuestion = await Question.findOne({ questionTitle });
@@ -41,7 +41,7 @@ router.post('/questions', async (req, res) => {
       return res.status(409).json({ message: 'Question with this title already exists' });
     }
 
-    const newQuestion = new Question({ subject, week, questionTitle, questionDescription,language, testCases,code });
+    const newQuestion = new Question({ subject, week, questionTitle, questionDescription,language, testCases,codeSnippet });
     await newQuestion.save();
 
     res.status(201).json({ message: 'Question stored successfully' });

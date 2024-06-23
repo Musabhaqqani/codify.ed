@@ -7,7 +7,7 @@ import { Box, HStack } from '@chakra-ui/react';
 function createWeek() {
     const navigate = useNavigate()
     const { subjectName } = useParams()
-    const [code, setCode] = useState();
+    const [codeEditor, setCodeEditor] = useState("");
     const editorRef = useRef();
 
 
@@ -23,7 +23,7 @@ function createWeek() {
         const tests = document.getElementById("testCases").value
         let parsedTests = JSON.parse(tests);
         parsedTests = parsedTests.map(arr => arr.map(Number));
-        // console.log(weekNum, title, desc, lang, tests)
+        console.log(codeEditor)
 
         await fetch("http://localhost:5000/api/v1/user/questions", {
             method: "post",
@@ -33,7 +33,8 @@ function createWeek() {
                 questionTitle: title,
                 questionDescription: desc,
                 language: lang,
-                testCases: parsedTests
+                testCases: parsedTests,
+                codeSnippet : codeEditor
             }),
             headers: {
                 'Content-Type': "application/json",
@@ -60,8 +61,8 @@ function createWeek() {
                             <Editor height="50vh"
                                 theme='vs-dark'
                                 language={subjectName}
-                                value={code}
-                                onChange={(e) => setCode(e.target)}
+                                value={codeEditor}
+                                onChange={(value) => setCodeEditor(value)}
                                 onMount={onMount} />
                         </Box>
                     </Box>

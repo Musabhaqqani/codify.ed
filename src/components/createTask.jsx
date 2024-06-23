@@ -6,7 +6,7 @@ import { Box, HStack } from '@chakra-ui/react';
 
 function createTask() {
     const {subjectName,weekNumber} = useParams()
-    const [code, setCode] = useState();
+    const [codeEditor, setCodeEditor] = useState("");
     const editorRef = useRef();
     const navigate = useNavigate();
 
@@ -32,7 +32,8 @@ function createTask() {
                 questionTitle: title,
                 questionDescription: desc,
                 language: lang,
-                testCases: parsedTests
+                testCases: parsedTests,
+                codeSnippet : codeEditor
             }),
             headers: {
                 'Content-Type': "application/json",
@@ -59,8 +60,8 @@ function createTask() {
                             <Editor height="50vh"
                                 theme='vs-dark'
                                 language={subjectName}
-                                value={code}
-                                onChange={(e) => setCode(e.target)}
+                                value={codeEditor}
+                                onChange={(value) => setCodeEditor(value)}
                                 onMount={onMount} />
                         </Box>
                     </Box>

@@ -34,7 +34,7 @@ const QuestionSchema = new mongoose.Schema({
       message: 'testCases must be an array of arrays with at least one element (expected answer)'
     }
   },
-  code:{
+  codeSnippet:{
     type:String,
     required:true
   }
