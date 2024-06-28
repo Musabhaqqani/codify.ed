@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const url = 'mongodb+srv://musabhaqqani:iUwJGslvNFSNjBOm@cluster0.onkpicf.mongodb.net/CodifyEd'
+const url = 'your mongoDB URI'
 
 mongoose.connect(url).then(()=> console.log("Student schema connected.."))
 
