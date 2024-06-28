@@ -1,8 +1,20 @@
-# React + Vite
+# Codify Ed
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An LMS specifically for coding languages for educational institutes to upload programs, weekly quizzes, and student assignments.
 
-Currently, two official plugins are available:
+# Functionality implemented for now
+- Creating an Admin (One who can create programs).
+- Creating programs and giving test cases.
+- The test cases can only be numeric inputs.
+- A code snippet can be typed for each program.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Steps to run this application
+```
+npm i
+cd server
+npm i
+nodemon index
+cd ..
+npm run dev
+```
+Please note that the application is still under development, there will be new functionalities added over time.
