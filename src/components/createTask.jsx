@@ -14,13 +14,43 @@ function createTask() {
         editorRef.current = ref;
         ref.focus();
     }
+    function parseTests(tests) {
+        try {
+          // Parse the JSON string
+          let parsedTests = JSON.parse(tests);
+      
+          // Check if parsedTests is an array
+          if (!Array.isArray(parsedTests)) {
+            throw new Error("The parsed result must be an array.");
+          }
+      
+          // Convert elements to numbers where possible, otherwise leave as strings
+          parsedTests = parsedTests.map(arr => {
+            if (!Array.isArray(arr)) {
+              throw new Error("Each element of the outer array must be an array.");
+            }
+      
+            return arr.map(item => {
+              // Attempt to convert to a number
+              const num = Number(item);
+              // Check if conversion was successful, otherwise return the original string
+              return isNaN(num) ? item : num;
+            });
+          });
+      
+          return parsedTests;
+        } catch (error) {
+          console.error("Invalid JSON string:", error.message);
+          return [];
+        }
+      }
     const handleTaskCreation = async () => {
         const title = document.getElementById("title").value
         const desc = document.getElementById("description").value
         const lang = document.getElementById("language").value
         const tests = document.getElementById("testCases").value
-        let parsedTests = JSON.parse(tests);
-        parsedTests = parsedTests.map(arr => arr.map(Number));
+        let parsedTests = parseTests(tests);
+        // parsedTests = parsedTests.map(arr => arr.map(Number));
         // console.log(parsedTests)
         // console.log(weekNumber, title, desc, lang, tests,subjectName)
 

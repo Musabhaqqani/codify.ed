@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const url = 'your mongoDB URI'
+const {Schema} = mongoose;
+const url = 'mongodb+srv://musabhaqqani:iUwJGslvNFSNjBOm@cluster0.onkpicf.mongodb.net/CodifyEd'
 
 mongoose.connect(url).then(()=> console.log("Student schema connected"))
 
@@ -25,13 +26,29 @@ const QuestionSchema = new mongoose.Schema({
     type : String,
     required : true
   },
+  // testCases: {
+  //   type: [[Number]], 
+  //   required: true,
+  //   validate: {
+  //     validator: testCaseArray => testCaseArray.length > 0 && 
+  //       testCaseArray.every(testCase => testCase.length >= 1), 
+  //     message: 'testCases must be an array of arrays with at least one element (expected answer)'
+  //   }
+  // },
   testCases: {
-    type: [[Number]], 
+    type: [[Schema.Types.Mixed]], // Allow each element to be either a string or a number
     required: true,
     validate: {
-      validator: testCaseArray => testCaseArray.length > 0 && 
-        testCaseArray.every(testCase => testCase.length >= 1), 
-      message: 'testCases must be an array of arrays with at least one element (expected answer)'
+      validator: function (testCaseArray) {
+        return (
+          testCaseArray.length > 0 &&
+          testCaseArray.every(testCase => 
+            testCase.length >= 1 && 
+            testCase.every(item => typeof item === 'number' || typeof item === 'string')
+          )
+        );
+      },
+      message: 'testCases must be an array of arrays with at least one element, where each element is either a number or a string'
     }
   },
   codeSnippet:{
