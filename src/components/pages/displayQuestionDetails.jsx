@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import Navbar from "./navs-containers/navbar"
-import QuestionDetailsCard from './navs-containers/questionDetailsCard'
+import Navbar from "../navs-containers/navbar"
+import QuestionDetailsCard from '../navs-containers/questionDetailsCard'
 
 
 export default function displayQuestionDetails() {

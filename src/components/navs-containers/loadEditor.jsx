@@ -2,8 +2,8 @@ import React from 'react'
 import Editor from "./editor"
 import { ChakraProvider } from '@chakra-ui/react'
 import { Box } from "@chakra-ui/react"
-import theme from './theme'
-import Navbar from "./navs-containers/navbar"
+import theme from '../theme'
+import Navbar from "./navbar"
 
 export default function loadEditor() {
   return (

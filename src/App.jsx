@@ -1,15 +1,14 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Login from './components/login'
-import LoadEditor from './components/loadEditor'
-import ProtectedRoutes from './components/protectedRoutes'
-import Dashboard from './components/dashboard'
-import Signup from './components/signup'
-import SubjectPage from './components/subjectPage'
-import DisplayQuestionList from './components/displayQuestionList'
-import DisplayQuestionDetails from './components/displayQuestionDetails'
-import CreateWeek from './components/createWeek'
-import CreateTask from "./components/createTask"
+import Login from './components/pages/login'
+import ProtectedRoutes from './components/pages/protectedRoutes'
+import Dashboard from './components/pages/dashboard'
+import Signup from './components/pages/signup'
+import SubjectPage from './components/pages/subjectPage'
+import DisplayQuestionList from './components/pages/displayQuestionList'
+import DisplayQuestionDetails from './components/pages/displayQuestionDetails'
+import CreateWeek from './components/pages/createWeek'
+import CreateTask from "./components/pages/createTask"
 
 function App() {
 

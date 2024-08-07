@@ -2,8 +2,8 @@ import { React, useState, useRef } from 'react'
 import Editor from '@monaco-editor/react'
 import { Box, HStack } from '@chakra-ui/react';
 import LanguageSelector from './languageSelector';
-import { CODE_SNIPPETS } from '../constants';
-import Output from './output'
+import { CODE_SNIPPETS } from '../../constants';
+import Output from '../output'
 
 export default function editor() {
     const [code, setCode] = useState(CODE_SNIPPETS["javascript"]);

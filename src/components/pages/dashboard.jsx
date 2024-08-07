@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react'
-import Navbar from "./navs-containers/navbar"
-import Modal from "./navs-containers/modal"
-import SubjectContainer from './navs-containers/subjectContainer'
+import Navbar from "../navs-containers/navbar"
+import Modal from "../navs-containers/modal"
+import SubjectContainer from '../navs-containers/subjectContainer'
 
 function dashboard() {
 

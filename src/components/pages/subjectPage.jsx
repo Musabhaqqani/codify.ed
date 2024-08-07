@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from 'react'
 import { useParams,useNavigate } from 'react-router-dom';
-import WeekCard from "./navs-containers/weekContainer"
-import Navbar from "./navs-containers/navbar"
+import WeekCard from "../navs-containers/weekContainer"
+import Navbar from "../navs-containers/navbar"
 
 function subjectPage() {
   const navigate = useNavigate()

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Button, Text, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react"
-import { LANGUAGE_VERSIONS } from '../constants'
+import { LANGUAGE_VERSIONS } from '../../constants'
 
 const languages = Object.entries(LANGUAGE_VERSIONS)
 const activeColor = "blue.400"
