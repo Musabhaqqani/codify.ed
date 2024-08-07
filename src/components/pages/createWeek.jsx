@@ -2,7 +2,8 @@ import Navbar from "../navs-containers/navbar"
 import { useNavigate, useParams } from 'react-router-dom'
 import { React, useState, useRef } from 'react'
 import Editor from '@monaco-editor/react'
-import { Box, HStack } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
+import InstructionEditor from "../navs-containers/InstructionEditor";
 
 function createWeek() {
     const navigate = useNavigate()
@@ -53,9 +54,13 @@ function createWeek() {
                 <input type="text" id="description" placeholder='Question Description*' className=' bg-white p-3 m-3 block w-3/4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' />
                 <input type="text" id="language" placeholder="language's file extention*" className=' bg-white p-3 m-3 block w-3/4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' />
                 <input type="text" id="testCases" placeholder='TestCases *' className=' bg-white p-3 m-3 block w-3/4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6' />
-                <p>Demo for code snippet and testCases to be created</p>
+                <p>Given below is a code snippet for {subjectName}, follow the instructions as given.</p>
 
                 <Box grid grid-cols-12>
+                    {/* Instruction Editor */}
+                    <InstructionEditor lang={subjectName} />
+                    <p className="p-5">Fill this blank editor with your own functions and code snippet.</p>
+
                     <Editor height="50vh"
                         theme='vs-dark'
                         language={subjectName}

@@ -1,6 +1,7 @@
 import { React, useRef } from 'react'
 import Editor from '@monaco-editor/react'
 import { Box } from '@chakra-ui/react';
+import {CODE_SNIPPETS} from "../../constants"
 
 export default function adminCodeEditor(props) {
     const editorRef = useRef();
@@ -16,7 +17,7 @@ export default function adminCodeEditor(props) {
                 <Editor height="50vh"
                     theme='vs-dark'
                     language={props.lang}
-                    value={props.code}
+                    value={CODE_SNIPPETS[props.lang]}
                     onMount={onMount} />
             </Box>
         </div>

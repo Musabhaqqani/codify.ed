@@ -2,7 +2,8 @@ import { React } from 'react'
 
 function modal(props) {
     const handleAddSubject = async () => {
-        const subName = document.getElementById("subject").value
+        let subName = document.getElementById("subject").value
+        subName = subName.toLowerCase()
         await fetch("http://localhost:5000/api/v1/user/subject-details", {
             method: "post",
             body: JSON.stringify({ subject: subName}),
