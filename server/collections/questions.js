@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
-const url = 'mongodb+srv://musabhaqqani:iUwJGslvNFSNjBOm@cluster0.onkpicf.mongodb.net/CodifyEd'
+const {url,localhost} = require("../routes/config")
 
-mongoose.connect(url).then(()=> console.log("Student schema connected"))
+mongoose.connect(localhost).then(()=> console.log("Student schema connected"))
 
 const QuestionSchema = new mongoose.Schema({
   subject: {

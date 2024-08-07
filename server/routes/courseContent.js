@@ -2,6 +2,10 @@ const express = require("express");
 const router = express.Router();
 const Question = require('../collections/questions');
 const Subjects = require("../collections/subjects")
+const validateToken = require('../middlewares/validation');
+const app = express();
+app.use(validateToken);
+
 
 router.post('/subject-details', async (req, res) => {
   try {

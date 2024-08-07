@@ -32,7 +32,12 @@ router.post("/", async (req, res) => {
             if (user) {
                 const passwordMatch = await bcrypt.compare(req.body.password, user.password)
                 if (passwordMatch) {
-                    jwt.sign({ user }, JWT_SECRET, { expiresIn: "2h" }, (err, token) => {
+                    const payload = {
+                        username : user.username,
+                        mail : user.mail 
+                    }
+
+                    jwt.sign(payload, JWT_SECRET, { expiresIn: "2h" }, (err, token) => {
                         if (err) {
                             res.status(400).send({ result: "Something went wrong." })
                         }

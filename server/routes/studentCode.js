@@ -1,8 +1,10 @@
 const express = require("express");
-const jwt = require("jsonwebtoken");
 const router = express.Router();
-const { JWT_SECRET } = require("./config");
 const Student = require('../collections/students');
+const validateToken = require('../middlewares/validation');
+const app = express();
+app.use(validateToken);
+
 router.post('/students', async (req, res) => {
 
     try {
