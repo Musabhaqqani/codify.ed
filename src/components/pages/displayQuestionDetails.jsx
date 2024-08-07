@@ -28,7 +28,7 @@ export default function displayQuestionDetails() {
         <div className='text-white'>
             <Navbar className="mb-5" />
             <h1 className='m-10 p-5 text-3xl font-mono '>Task Details </h1>
-            {questionDetails ? ( // Check if questionDetails is not null
+            {questionDetails ? ( 
                 <QuestionDetailsCard
                     language={subjectName}
                     title={questionDetails.questionTitle}

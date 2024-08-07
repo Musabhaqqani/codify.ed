@@ -26,15 +26,6 @@ const QuestionSchema = new mongoose.Schema({
     type : String,
     required : true
   },
-  // testCases: {
-  //   type: [[Number]], 
-  //   required: true,
-  //   validate: {
-  //     validator: testCaseArray => testCaseArray.length > 0 && 
-  //       testCaseArray.every(testCase => testCase.length >= 1), 
-  //     message: 'testCases must be an array of arrays with at least one element (expected answer)'
-  //   }
-  // },
   testCases: {
     type: [[Schema.Types.Mixed]], // Allow each element to be either a string or a number
     required: true,
